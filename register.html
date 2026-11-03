@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Мосволонтер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">МОС<br>ВОЛОНТЕР</div>
+        </div>
+        <nav class="nav">
+            <a href="index.html">О проекте</a>
+            <a href="#">Мероприятия</a>
+            <a href="#">Волонтерам</a>
+            <a href="#">Организациям</a>
+            <a href="index.html">Назад</a>
+        </nav>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card">
+            <h1>Регистрация</h1>
+            
+            <form id="registerForm">
+                <h2>Личные данные</h2>
+                
+                <div class="input-group">
+                    <label for="lastName">Фамилия</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="firstName">Имя</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="middleName">Отчество</label>
+                    <input type="text" id="middleName">
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="noMiddleName">
+                    <label for="noMiddleName">Нет отчества</label>
+                </div>
+
+                <div class="input-group">
+                    <label>Пол</label>
+                    <div class="radio-container">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="female" checked>
+                            <span>Женский</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="male">
+                            <span>Мужской</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="birthDate">Дата рождения</label>
+                    <input type="text" id="birthDate" placeholder="ДД.ММ.ГГГГ" maxlength="10" required>
+                </div>
+
+                <h2>Контакты</h2>
+                
+                <div class="input-group">
+                    <label for="email">Электронная почта</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmPassword">Повторите пароль</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Я принимаю условия <a href="#">соглашения о пользовании информационными системами и ресурсами города Москвы</a>.</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="personalData" required>
+                    <label for="personalData">Подтверждаю согласие на <a href="#">обработку персональных данных</a>.</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                
+                <div class="text-center">
+                    Уже зарегистрированы? <a href="login.html">Войти</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

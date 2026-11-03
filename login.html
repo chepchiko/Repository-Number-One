@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Мосволонтер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">МОС<br>ВОЛОНТЕР</div>
+        </div>
+        <nav class="nav">
+            <a href="index.html">О проекте</a>
+            <a href="#">Мероприятия</a>
+            <a href="#">Волонтерам</a>
+            <a href="#">Организациям</a>
+            <a href="index.html">Назад</a>
+        </nav>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card" style="max-width: 450px;">
+            <h1>Вход</h1>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="loginEmail">Электронная почта или телефон</label>
+                    <input type="text" id="loginEmail" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <a href="#" class="forgot-pass">Восстановить пароль</a>
+
+                <button type="submit" class="btn btn-primary">Войти</button>
+                <button type="button" class="btn btn-outline" onclick="window.location.href='register.html'">Зарегистрироваться</button>
+            </form>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

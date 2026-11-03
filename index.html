@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мосволонтер - Главная</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo-matreshka.png" alt="Мосволонтер" class="logo-img">
+        </div>
+        <nav class="nav">
+            <a href="#" id="nav-about">О проекте</a>
+            <a href="#" id="nav-events">Мероприятия</a>
+            <a href="#">Волонтерам</a>
+            <a href="#">Организациям</a>
+            <a href="login.html">Войти</a>
+        </nav>
+    </header>
+
+        <section class="hero">
+        <button class="slider-arrow slider-prev" type="button" aria-label="Предыдущий слайд" id="prevBtn">
+            &#8592;
+        </button>
+        
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Слайд 1 -->
+                <div class="hero-slide" style="background-image: url('images/slide1.png');">
+                    <div class="hero-copy">
+                        <h1>Более 1,5 миллионов добрых дел!</h1>
+                        <p>«Мосволонтер» объединяет неравнодушных людей, чтобы делать город добрее каждый день.</p>
+                    </div>
+                </div>
+                <!-- Слайд 2 -->
+                <div class="hero-slide" style="background-image: url('images/slide2.png');">
+                    <div class="hero-copy">
+                        <h1>Найди свое направление</h1>
+                        <p>Свыше 10 сфер — от экологии до событийного волонтерства. Выбирай то, что откликается тебе.</p>
+                    </div>
+                </div>
+                <!-- Слайд 3 -->
+                <div class="hero-slide" style="background-image: url('images/slide3.png');">
+                    <div class="hero-copy">
+                        <h1>Москва помогает</h1>
+                        <p>Помогай в сборе гуманитарной помощи для участников СВО  и жителей новых регионов.</p>
+                    </div>
+                </div>
+                <!-- Слайд 4 -->
+                <div class="hero-slide" style="background-image: url('images/slide4.png');">
+                    <div class="hero-copy">
+                        <h1>Твой путь начинается здесь</h1>
+                        <p>Пройди бесплатные онлайн-курсы, получи книжку волонтера и открывай новые возможности.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="slider-arrow slider-next" type="button" aria-label="Следующий слайд" id="nextBtn">
+            &#8594;
+        </button>
+    </section>
+
+    <h2 class="section-title">Направления работы</h2>
+    <div class="grid-container">
+        <div class="card">
+            <img src="images/direction-social.png" alt="Социальное" class="card-img">
+            <h3>Социальное волонтерство</h3>
+        </div>
+        <div class="card">
+            <img src="images/direction-eco.png" alt="Экологическое" class="card-img">
+            <h3>Экологическое волонтерство</h3>
+        </div>
+        <div class="card">
+            <img src="images/direction-event.png" alt="Событийное" class="card-img">
+            <h3>Событийное волонтерство</h3>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="about">О Мосволонтере</h2>
+    <div class="about-section">
+        <div class="about-text">
+            <p>«Мосволонтер» — крупнейший центр добровольчества в России и команда единомышленников.</p>
+            <br>
+            <p>Уже 12 лет мы вместе помогаем тем, кто действительно в этом нуждается.</p>
+        </div>
+        <img src="images/about.jpg" alt="Команда" class="about-img">
+    </div>
+
+    <h2 class="section-title" id="events">Ближайшие события</h2>
+    <div class="events-container">
+        <div class="event-item">
+            <div class="event-info">
+                <h4>19 марта - 31 декабря</h4>
+                <p>Общественный контроль ремонта от Ассоциации "ЖК контроль города Москвы"</p>
+            </div>
+            <button class="btn btn-primary" onclick="window.location.href='register.html'">Стать волонтером</button>
+        </div>
+        <div class="event-item">
+            <div class="event-info">
+                <h4>23 марта - 15 декабря</h4>
+                <p>Набор волонтеров проекта "Миссия памяти" от Российского красного креста.</p>
+            </div>
+            <button class="btn btn-primary" onclick="window.location.href='register.html'">Стать волонтером</button>
+        </div>
+        <div class="event-item">
+            <div class="event-info">
+                <h4>13 августа - 17 декабря</h4>
+                <p>Подготовка портретов для выставки «Герои нашего времени».</p>
+            </div>
+            <button class="btn btn-primary" onclick="window.location.href='register.html'">Стать волонтером</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-brand">
+            <img src="images/logo.png" alt="Мосволонтер" class="footer-logo-img">
+            <strong>Мосволонтёр</strong>
+            <p>Связаться с нами:</p>
+            <div class="social-links">
+            <a href="#" aria-label="Одноклассники">
+                <img src="images/ok.png" alt="Одноклассники">
+            </a>
+            <a href="#" aria-label="Telegram">
+                <img src="images/tg.png" alt="Telegram">
+            </a>
+            <a href="#" aria-label="ВКонтакте">
+                <img src="images/vk.png" width="30px" alt="ВКонтакте">
+            </a>
+</div>
+        </div>
+        <div class="footer-col">
+            <h3>Волонтерам</h3>
+            <a href="#">Мероприятия</a>
+            <a href="#">Направления волонтерства</a>
+            <a href="#">Обучение</a>
+        </div>
+        <div class="footer-col">
+            <h3>Организациям</h3>
+            <a href="#">Подача заявки на партнерство</a>
+            <a href="#">Сервисы для партнеров</a>
+        </div>
+        <div class="footer-col">
+            <h3>О проекте</h3>
+            <a href="#">О нас</a>
+            <a href="#">Новости</a>
+            <a href="#">Контакты</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

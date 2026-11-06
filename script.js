@@ -1,82 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     /* ==========================================
-       1. ЛОГИКА МОДАЛЬНЫХ ОКОН
+       ВАШ ТЕКУЩИЙ КОД (Слайдер, прокрутка)
        ========================================== */
 
-    // Получаем элементы окон
-    const modalAbout = document.getElementById('modal-about');
-    const modalNews = document.getElementById('modal-news');
-    const modalContacts = document.getElementById('modal-contacts');
-
-    // Получаем кнопки в меню, которые их открывают
-    const aboutBtn = document.getElementById('nav-about');
-    const newsBtn = document.getElementById('nav-news');
-    const contactsBtn = document.getElementById('nav-contacts');
-
-    // Получаем кнопки закрытия (крестики)
-    const closeAbout = document.getElementById('close-about');
-    const closeNews = document.getElementById('close-news');
-    const closeContacts = document.getElementById('close-contacts');
-
-    // Универсальная функция открытия
-    const openModal = (modal) => {
-        if (modal) {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
-        }
-    };
-
-    // Универсальная функция закрытия
-    const closeModal = (modal) => {
-        if (modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = ''; // Возвращаем прокрутку
-        }
-    };
-
-    // Назначаем кнопки открытия
-    if (aboutBtn) aboutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal(modalAbout);
-    });
-
-    if (newsBtn) newsBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal(modalNews);
-    });
-
-    if (contactsBtn) contactsBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal(modalContacts);
-    });
-
-    // Назначаем кнопки закрытия (крестики)
-    if (closeAbout) closeAbout.addEventListener('click', () => closeModal(modalAbout));
-    if (closeNews) closeNews.addEventListener('click', () => closeModal(modalNews));
-    if (closeContacts) closeContacts.addEventListener('click', () => closeModal(modalContacts));
-
-    // Закрытие окна при клике на область ЗА пределами окна (на затемнение)
-    window.onclick = function(event) {
-        if (event.target === modalAbout) closeModal(modalAbout);
-        if (event.target === modalNews) closeModal(modalNews);
-        if (event.target === modalContacts) closeModal(modalContacts);
-    };
-
-    // Закрытие по нажатию клавиши Esc
-    document.addEventListener('keydown', function(event) {
-        if (event.key === "Escape") {
-            if (modalAbout && modalAbout.style.display === 'block') closeModal(modalAbout);
-            if (modalNews && modalNews.style.display === 'block') closeModal(modalNews);
-            if (modalContacts && modalContacts.style.display === 'block') closeModal(modalContacts);
-        }
-    });
-
-
-    /* ==========================================
-       2. ВАШ ТЕКУЩИЙ КОД (Слайдер, прокрутка)
-       ========================================== */
-       
     // Плавная прокрутка к разделам
     const navAbout = document.getElementById('nav-about');
     const navEvents = document.getElementById('nav-events');
@@ -89,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
             sectionAbout.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     }
-
     if (navEvents && sectionEvents) {
         navEvents.addEventListener('click', function(e) {
             e.preventDefault();
@@ -105,23 +31,20 @@ document.addEventListener("DOMContentLoaded", function() {
     if (track && prevBtn && nextBtn) {
         const slides = Array.from(track.children);
         let currentIndex = 0;
-
         const updateSlide = (index) => {
             track.style.transform = `translateX(-${index * 100}%)`;
         };
-
         nextBtn.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % slides.length;
             updateSlide(currentIndex);
         });
-
         prevBtn.addEventListener('click', () => {
             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             updateSlide(currentIndex);
         });
     }
 
-    // Регистрация и вход (ваш старый код)
+    // Регистрация и вход
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', function(event) {
@@ -146,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Маска даты (из вашего старого кода)
+    // Маска даты
     const birthDateInput = document.getElementById('birthDate');
     if (birthDateInput) {
         birthDateInput.addEventListener('input', function(e) {

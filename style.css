@@ -461,31 +461,33 @@ a:hover { text-decoration: underline; }
     text-decoration: underline;
 }
 
-/* Кнопка-ссылка (Стать волонтером, Присоединиться и т.д.) */
+/* ===== CTA-кнопка в модалке ===== */
 #infoModal .modal-cta-wrap {
     margin-top: 24px !important;
     text-align: left;
 }
 
-#infoModal #modalBody .modal-cta,
-#infoModal #modalBody .modal-cta:link,
-#infoModal #modalBody .modal-cta:visited {
+#infoModal #modalBody button.modal-cta {
     display: inline-block !important;
     padding: 12px 26px !important;
-    background: linear-gradient(135deg, #8177bd, #6659a8) !important;
+    background: linear-gradient(135deg, #8177bd 0%, #6659a8 100%) !important;
     color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;  /* страховка */
-    text-decoration: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 0 !important;
+    outline: 0;
     border-radius: 10px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
     font-size: 15px !important;
     font-weight: 500 !important;
+    line-height: 1.2 !important;
+    cursor: pointer !important;
     box-shadow: 0 6px 16px rgba(102, 89, 168, 0.35) !important;
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
 }
 
-#infoModal #modalBody .modal-cta:hover,
-#infoModal #modalBody .modal-cta:focus {
-    background: linear-gradient(135deg, #6659a8, #51458d) !important;
+#infoModal #modalBody button.modal-cta:hover,
+#infoModal #modalBody button.modal-cta:focus {
+    background: linear-gradient(135deg, #6659a8 0%, #51458d 100%) !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     transform: translateY(-2px) !important;

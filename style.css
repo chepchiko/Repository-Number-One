@@ -481,7 +481,7 @@ a:hover { text-decoration: underline; }
     font-weight: 500 !important;
     line-height: 1.2 !important;
     cursor: pointer !important;
-    box-shadow: 0 6px 16px rgba(102, 89, 168, 0.35) !important;
+    box-shadow: none !important;
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
 }
 
@@ -491,7 +491,7 @@ a:hover { text-decoration: underline; }
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(102, 89, 168, 0.45) !important;
+    box-shadow: none !important;
     text-decoration: none !important;
 }
 /* Блок новостей */

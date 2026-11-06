@@ -5,6 +5,211 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет — Мосволонтер</title>
     <link rel="stylesheet" href="style.css">
+        <style>
+        /* ============================================================
+           СТИЛИ ЛИЧНОГО КАБИНЕТА
+           ============================================================ */
+        .profile-wrapper {
+            flex: 1;
+            padding: 40px 20px 60px;
+            display: flex;
+            justify-content: center;
+            background: #8177bd; /* Фиолетовый фон как у сайта */
+        }
+        .profile-card {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px 40px;
+            box-shadow: 0 10px 30px rgba(40, 20, 80, 0.25);
+            color: #333;
+        }
+
+        /* Шапка профиля */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #ebe7f7;
+            flex-wrap: wrap;
+        }
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            flex: 0 0 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8177bd, #51458d);
+            color: #fff;
+            font-size: 28px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 1px;
+        }
+        .profile-info { flex: 1; min-width: 200px; }
+        .profile-info h1 {
+            margin: 0 0 6px;
+            font-size: 26px;
+            font-weight: 600;
+            color: #222;
+        }
+        .profile-status {
+            margin: 0;
+            color: #8177bd;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .profile-logout {
+            width: auto !important;
+            padding: 9px 24px !important;
+            margin: 0 !important;
+        }
+
+        /* Сетка */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .profile-block {
+            margin-bottom: 30px;
+        }
+        .profile-block h2 {
+            margin: 0 0 16px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #51458d;
+            padding-left: 12px;
+            border-left: 4px solid #8177bd;
+        }
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ebe7f7;
+            font-size: 15px;
+        }
+        .profile-row:last-child { border-bottom: none; }
+        .profile-row span { color: #777; }
+        .profile-row strong { color: #222; font-weight: 600; }
+
+        /* Книжка волонтёра */
+        .volunteer-book {
+            background: linear-gradient(135deg, #f7f5fc, #efeaf9);
+            border-radius: 14px;
+            padding: 24px;
+        }
+        .book-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .stat-value {
+            display: block;
+            font-size: 32px;
+            font-weight: 700;
+            color: #51458d;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        .progress-wrap { margin-top: 10px; }
+        .progress-label {
+            font-size: 14px;
+            color: #51458d;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            height: 12px;
+            background: #ddd7f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8177bd, #51458d);
+            border-radius: 6px;
+        }
+        .progress-hint {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #777;
+            text-align: right;
+        }
+
+        /* Мероприятия в профиле */
+        .profile-event {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 20px;
+            background: #faf9fd;
+            border-left: 4px solid #8177bd;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .profile-event h3 {
+            margin: 0 0 6px;
+            font-size: 16px;
+            color: #222;
+            font-weight: 600;
+        }
+        .profile-event small { color: #777; font-size: 14px; }
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #8177bd;
+            color: #fff;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .badge-muted {
+            background: #ebe7f7;
+            color: #6659a8;
+        }
+
+        /* Кнопки внизу профиля */
+        .profile-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ebe7f7;
+        }
+        .profile-actions .btn {
+            width: auto !important;
+            margin: 0 !important;
+            padding: 12px 30px !important;
+            text-decoration: none !important;
+        }
+
+        /* Адаптив для телефонов */
+        @media (max-width: 600px) {
+            .profile-wrapper { padding: 20px 10px 40px; }
+            .profile-card { padding: 20px; border-radius: 14px; }
+            .profile-grid { grid-template-columns: 1fr; gap: 0; }
+            .profile-info h1 { font-size: 20px; }
+            .profile-avatar { width: 60px; height: 60px; flex: 0 0 60px; font-size: 22px; }
+            .stat-value { font-size: 26px; }
+            .profile-event { flex-wrap: wrap; }
+            .profile-actions .btn { width: 100% !important; text-align: center; }
+        }
+    </style>
 </head>
 <body>
     <header class="header">

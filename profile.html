@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет — Мосволонтер</title>
     <link rel="stylesheet" href="style.css">
-        <style>
-        /* ============================================================
-           СТИЛИ ЛИЧНОГО КАБИНЕТА
-           ============================================================ */
+    
+    <!-- СТИЛИ ПРОФИЛЯ (ВСТРОЕНЫ, ЧТОБЫ ТОЧНО СРАБОТАЛИ) -->
+    <style>
         .profile-wrapper {
             flex: 1;
             padding: 40px 20px 60px;
             display: flex;
             justify-content: center;
-            background: #8177bd; /* Фиолетовый фон как у сайта */
+            background: #8177bd;
         }
         .profile-card {
             width: 100%;
@@ -25,8 +24,6 @@
             box-shadow: 0 10px 30px rgba(40, 20, 80, 0.25);
             color: #333;
         }
-
-        /* Шапка профиля */
         .profile-header {
             display: flex;
             align-items: center;
@@ -68,17 +65,13 @@
             padding: 9px 24px !important;
             margin: 0 !important;
         }
-
-        /* Сетка */
         .profile-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 30px;
         }
-        .profile-block {
-            margin-bottom: 30px;
-        }
+        .profile-block { margin-bottom: 30px; }
         .profile-block h2 {
             margin: 0 0 16px;
             font-size: 18px;
@@ -97,8 +90,6 @@
         .profile-row:last-child { border-bottom: none; }
         .profile-row span { color: #777; }
         .profile-row strong { color: #222; font-weight: 600; }
-
-        /* Книжка волонтёра */
         .volunteer-book {
             background: linear-gradient(135deg, #f7f5fc, #efeaf9);
             border-radius: 14px;
@@ -119,10 +110,7 @@
             line-height: 1;
             margin-bottom: 8px;
         }
-        .stat-label {
-            font-size: 14px;
-            color: #666;
-        }
+        .stat-label { font-size: 14px; color: #666; }
         .progress-wrap { margin-top: 10px; }
         .progress-label {
             font-size: 14px;
@@ -147,8 +135,6 @@
             color: #777;
             text-align: right;
         }
-
-        /* Мероприятия в профиле */
         .profile-event {
             display: flex;
             align-items: center;
@@ -177,12 +163,7 @@
             font-weight: 500;
             white-space: nowrap;
         }
-        .badge-muted {
-            background: #ebe7f7;
-            color: #6659a8;
-        }
-
-        /* Кнопки внизу профиля */
+        .badge-muted { background: #ebe7f7; color: #6659a8; }
         .profile-actions {
             display: flex;
             gap: 16px;
@@ -196,9 +177,8 @@
             margin: 0 !important;
             padding: 12px 30px !important;
             text-decoration: none !important;
+            display: inline-block;
         }
-
-        /* Адаптив для телефонов */
         @media (max-width: 600px) {
             .profile-wrapper { padding: 20px 10px 40px; }
             .profile-card { padding: 20px; border-radius: 14px; }

@@ -332,11 +332,11 @@ a:hover { text-decoration: underline; }
     display: flex !important;
     align-items: flex-start;
     justify-content: center;
+    text-align: center;
     padding: 5vh 16px;
     overflow-y: auto;
     animation: modalFadeIn 0.25s ease;
 }
-
 /* ---------- Само окно ---------- */
 #infoModal .modal-content {
     position: relative;
@@ -349,7 +349,8 @@ a:hover { text-decoration: underline; }
     box-shadow: 0 30px 80px rgba(30, 15, 70, 0.5) !important;
     font-family: Arial, Helvetica, sans-serif;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
+    text-align: left;
 }
 #infoModal.show .modal-content {
     animation: modalSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);

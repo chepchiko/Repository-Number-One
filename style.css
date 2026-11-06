@@ -379,4 +379,77 @@ a:hover { text-decoration: underline; }
     font-size: 13px;
 }
 
+/* ========================================
+   ДОПОЛНЕНИЯ ДЛЯ МОДАЛЬНЫХ ОКОН
+   ======================================== */
+
+/* Курсор и ховер на карточках направлений */
+.card {
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+/* Показ модального окна через класс .show */
+.modal.show {
+    display: block;
+}
+
+/* Внутреннее содержимое модалки */
+#modalBody h2 {
+    margin: 0 0 14px;
+    font-size: 22px;
+    color: #222;
+}
+#modalBody h3 {
+    margin: 16px 0 8px;
+    font-size: 17px;
+    color: #333;
+}
+#modalBody p {
+    margin: 0 0 10px;
+    line-height: 1.55;
+    color: #444;
+    font-size: 15px;
+}
+#modalBody ul {
+    margin: 6px 0 14px 20px;
+}
+#modalBody li {
+    margin-bottom: 6px;
+    line-height: 1.45;
+    color: #444;
+    font-size: 15px;
+}
+#modalBody a {
+    color: var(--purple-dark);
+    text-decoration: underline;
+}
+#modalBody a:hover {
+    color: var(--purple-deep);
+}
+
+/* Кнопка закрытия — смещаем правее, чтобы не налезала на заголовок */
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    float: none;
+}
+
+/* Сдвигаем контент модалки, чтобы крестик не перекрывал заголовок */
+.modal-content {
+    padding-top: 44px;
+}
+
+/* Мобильная корректировка */
+@media (max-width: 480px) {
+    #modalBody h2 { font-size: 18px; }
+    #modalBody h3 { font-size: 15px; }
+    #modalBody p, #modalBody li { font-size: 14px; }
+}
+
 

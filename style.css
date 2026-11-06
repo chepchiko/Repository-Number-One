@@ -546,3 +546,204 @@ a:hover { text-decoration: underline; }
         bottom: 12px;
     }
 }
+
+/* ============================================================
+   ЛИЧНЫЙ КАБИНЕТ
+   ============================================================ */
+.profile-wrapper {
+    flex: 1;
+    padding: 30px 20px 50px;
+    display: flex;
+    justify-content: center;
+}
+.profile-card {
+    width: 100%;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(40, 20, 80, 0.18);
+}
+
+/* Шапка профиля */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #ebe7f7;
+    flex-wrap: wrap;
+}
+.profile-avatar {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8177bd, #51458d);
+    color: #fff;
+    font-size: 26px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+.profile-info { flex: 1; min-width: 200px; }
+.profile-info h1 {
+    margin: 0 0 4px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222;
+}
+.profile-status {
+    margin: 0;
+    color: #8177bd;
+    font-size: 14px;
+    font-weight: 500;
+}
+.profile-logout {
+    width: auto !important;
+    padding: 9px 20px !important;
+    margin: 0 !important;
+}
+
+/* Сетка */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+.profile-block {
+    margin-bottom: 24px;
+}
+.profile-block h2 {
+    margin: 0 0 14px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #51458d;
+    padding-left: 12px;
+    border-left: 4px solid #8177bd;
+}
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px dashed #ebe7f7;
+    font-size: 15px;
+}
+.profile-row:last-child { border-bottom: none; }
+.profile-row span { color: #777; }
+.profile-row strong { color: #222; font-weight: 500; }
+
+/* Книжка волонтёра */
+.volunteer-book {
+    background: linear-gradient(135deg, #f7f5fc, #efeaf9);
+    border-radius: 14px;
+    padding: 22px;
+}
+.book-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: #51458d;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.stat-label {
+    font-size: 13px;
+    color: #777;
+}
+.progress-wrap { margin-top: 10px; }
+.progress-label {
+    font-size: 14px;
+    color: #51458d;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.progress-bar {
+    height: 10px;
+    background: #ddd7f0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8177bd, #51458d);
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}
+.progress-hint {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #777;
+    text-align: right;
+}
+
+/* Мероприятия в профиле */
+.profile-event {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #faf9fd;
+    border-left: 4px solid #8177bd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.profile-event h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    color: #222;
+    font-weight: 500;
+}
+.profile-event small { color: #777; font-size: 13px; }
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #8177bd;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.badge-muted {
+    background: #ebe7f7;
+    color: #6659a8;
+}
+
+/* Кнопки внизу профиля */
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.profile-actions .btn {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 11px 24px !important;
+    text-decoration: none !important;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .profile-card { padding: 22px 18px; }
+    .profile-grid { grid-template-columns: 1fr; gap: 0; }
+    .profile-info h1 { font-size: 20px; }
+    .profile-header { gap: 14px; }
+    .profile-avatar { width: 60px; height: 60px; flex: 0 0 60px; font-size: 22px; }
+    .stat-value { font-size: 24px; }
+    .profile-event { flex-wrap: wrap; }
+    .profile-actions .btn { width: 100% !important; text-align: center; }
+}

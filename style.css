@@ -461,28 +461,37 @@ a:hover { text-decoration: underline; }
     text-decoration: underline;
 }
 
-/* Кнопка-ссылка (Стать волонтером) */
+/* Кнопка-ссылка (Стать волонтером, Присоединиться и т.д.) */
 #infoModal .modal-cta-wrap {
     margin-top: 24px !important;
+    text-align: left;
 }
-#infoModal .modal-cta {
+
+#infoModal #modalBody .modal-cta,
+#infoModal #modalBody .modal-cta:link,
+#infoModal #modalBody .modal-cta:visited {
     display: inline-block !important;
     padding: 12px 26px !important;
     background: linear-gradient(135deg, #8177bd, #6659a8) !important;
-    color: #fff !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;  /* страховка */
     text-decoration: none !important;
     border-radius: 10px !important;
     font-size: 15px !important;
     font-weight: 500 !important;
     box-shadow: 0 6px 16px rgba(102, 89, 168, 0.35) !important;
-    transition: transform 0.2s, box-shadow 0.2s !important;
-}
-#infoModal .modal-cta:hover {
-    background: linear-gradient(135deg, #6659a8, #51458d) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(102, 89, 168, 0.45) !important;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
 }
 
+#infoModal #modalBody .modal-cta:hover,
+#infoModal #modalBody .modal-cta:focus {
+    background: linear-gradient(135deg, #6659a8, #51458d) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(102, 89, 168, 0.45) !important;
+    text-decoration: none !important;
+}
 /* Блок новостей */
 #infoModal .news-item {
     padding: 16px 20px !important;

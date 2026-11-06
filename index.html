@@ -14,41 +14,37 @@
         <nav class="nav">
             <a href="#" id="nav-about">О проекте</a>
             <a href="#" id="nav-events">Мероприятия</a>
-            <a href="#">Волонтерам</a>
-            <a href="#">Организациям</a>
+            <a href="#" data-modal="volunteers">Волонтерам</a>
+            <a href="#" data-modal="organizations">Организациям</a>
             <a href="login.html">Войти</a>
         </nav>
     </header>
 
-        <section class="hero">
+    <section class="hero">
         <button class="slider-arrow slider-prev" type="button" aria-label="Предыдущий слайд" id="prevBtn">
             &#8592;
         </button>
-        
+
         <div class="slider-container">
             <div class="slider-track" id="sliderTrack">
-                <!-- Слайд 1 -->
                 <div class="hero-slide" style="background-image: url('slide1.png');">
                     <div class="hero-copy">
                         <h1>Более 1,5 миллионов добрых дел!</h1>
                         <p>«Мосволонтер» объединяет неравнодушных людей, чтобы делать город добрее каждый день.</p>
                     </div>
                 </div>
-                <!-- Слайд 2 -->
                 <div class="hero-slide" style="background-image: url('slide2.png');">
                     <div class="hero-copy">
                         <h1>Найди свое направление</h1>
                         <p>Свыше 10 сфер — от экологии до событийного волонтерства. Выбирай то, что откликается тебе.</p>
                     </div>
                 </div>
-                <!-- Слайд 3 -->
                 <div class="hero-slide" style="background-image: url('slide3.png');">
                     <div class="hero-copy">
                         <h1>Москва помогает</h1>
-                        <p>Помогай в сборе гуманитарной помощи для участников СВО  и жителей новых регионов.</p>
+                        <p>Помогай в сборе гуманитарной помощи для участников СВО и жителей новых регионов.</p>
                     </div>
                 </div>
-                <!-- Слайд 4 -->
                 <div class="hero-slide" style="background-image: url('slide4.png');">
                     <div class="hero-copy">
                         <h1>Твой путь начинается здесь</h1>
@@ -57,7 +53,7 @@
                 </div>
             </div>
         </div>
-        
+
         <button class="slider-arrow slider-next" type="button" aria-label="Следующий слайд" id="nextBtn">
             &#8594;
         </button>
@@ -65,15 +61,15 @@
 
     <h2 class="section-title">Направления работы</h2>
     <div class="grid-container">
-        <div class="card">
+        <div class="card" data-modal="social">
             <img src="direction-social.png" alt="Социальное" class="card-img">
             <h3>Социальное волонтерство</h3>
         </div>
-        <div class="card">
+        <div class="card" data-modal="eco">
             <img src="direction-eco.png" alt="Экологическое" class="card-img">
             <h3>Экологическое волонтерство</h3>
         </div>
-        <div class="card">
+        <div class="card" data-modal="event">
             <img src="direction-event.png" alt="Событийное" class="card-img">
             <h3>Событийное волонтерство</h3>
         </div>
@@ -120,36 +116,44 @@
             <strong>Мосволонтёр</strong>
             <p>Связаться с нами:</p>
             <div class="social-links">
-            <a href="#" aria-label="Одноклассники">
-                <img src="ok.png" alt="Одноклассники">
-            </a>
-            <a href="#" aria-label="Telegram">
-                <img src="tg.png" alt="Telegram">
-            </a>
-            <a href="#" aria-label="ВКонтакте">
-                <img src="vk.png" width="30px" alt="ВКонтакте">
-            </a>
-</div>
+                <a href="#" aria-label="Одноклассники">
+                    <img src="ok.png" alt="Одноклассники">
+                </a>
+                <a href="#" aria-label="Telegram">
+                    <img src="tg.png" alt="Telegram">
+                </a>
+                <a href="#" aria-label="ВКонтакте">
+                    <img src="vk.png" width="30px" alt="ВКонтакте">
+                </a>
+            </div>
         </div>
         <div class="footer-col">
             <h3>Волонтерам</h3>
-            <a href="#">Мероприятия</a>
-            <a href="#">Направления волонтерства</a>
-            <a href="#">Обучение</a>
+            <a href="#" id="nav-events-footer">Мероприятия</a>
+            <a href="#" data-modal="volunteers">Направления волонтерства</a>
+            <a href="#" data-modal="volunteers">Обучение</a>
         </div>
         <div class="footer-col">
             <h3>Организациям</h3>
-            <a href="#">Подача заявки на партнерство</a>
-            <a href="#">Сервисы для партнеров</a>
+            <a href="#" data-modal="organizations">Подача заявки на партнерство</a>
+            <a href="#" data-modal="organizations">Сервисы для партнеров</a>
         </div>
         <div class="footer-col">
             <h3>О проекте</h3>
-            <a href="#">О нас</a>
-            <a href="#">Новости</a>
-            <a href="#">Контакты</a>
+            <a href="#" data-modal="about">О нас</a>
+            <a href="#" data-modal="news">Новости</a>
+            <a href="#" data-modal="contacts">Контакты</a>
         </div>
     </footer>
-    <script src="script.js"></script>
 
+    <!-- Универсальное модальное окно -->
+    <div class="modal" id="infoModal" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal" aria-label="Закрыть">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,215 +1,33 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // ==========================================
-    // ЛОГИКА ДЛЯ СТРАНИЦЫ РЕГИСТРАЦИИ
-    // ==========================================
-    const registerForm = document.getElementById('registerForm');
-
-    if (registerForm) {
-        // Отключение поля "Отчество"
-        const noMiddleNameCheckbox = document.getElementById('noMiddleName');
-        const middleNameInput = document.getElementById('middleName');
-
-        if (noMiddleNameCheckbox && middleNameInput) {
-            noMiddleNameCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    middleNameInput.value = ''; 
-                    middleNameInput.disabled = true; 
-                    middleNameInput.style.backgroundColor = '#e5e5e5';
-                } else {
-                    middleNameInput.disabled = false; 
-                    middleNameInput.style.backgroundColor = '#fff';
-                }
-            });
-        }
-
-        // Маска для даты рождения
-        const birthDateInput = document.getElementById('birthDate');
-        if (birthDateInput) {
-            birthDateInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, ''); 
-                if (value.length > 8) value = value.slice(0, 8);
-                
-                let formatted = '';
-                if (value.length > 0) {
-                    formatted = value.substring(0, 2);
-                    if (value.length > 2) formatted += '.' + value.substring(2, 4);
-                    if (value.length > 4) formatted += '.' + value.substring(4, 8);
-                }
-                e.target.value = formatted;
-            });
-        }
-
-        // Обработка отправки
-        registerForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                alert('Пароли не совпадают! Пожалуйста, проверьте ввод.');
-                return;
-            }
-
-            alert('Регистрация прошла успешно! (Демо-режим). Сейчас перенаправим на страницу входа.');
-            window.location.href = 'login.html'; // Переход на вход после регистрации
-        });
-    }
-
-    // ==========================================
-    // ЛОГИКА ДЛЯ СТРАНИЦЫ ВХОДА
-    // ==========================================
-    const loginForm = document.getElementById('loginForm');
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Предотвращаем перезагрузку
-            
-            // Имитация проверки логина и пароля
-            alert('Вы успешно вошли в систему! (Демо-режим). Перенаправление на главную.');
-            window.location.href = 'index.html'; // Переход на главную
-        });
-    }
-        // ==========================================
-    // ЛОГИКА СЛАЙДЕРА НА ГЛАВНОЙ
-    // ==========================================
-    const track = document.getElementById('sliderTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    if (track && prevBtn && nextBtn) {
-        // Получаем все слайды
-        const slides = Array.from(track.children);
-        let currentIndex = 0;
-
-        // Функция обновления позиции дорожки
-        const updateSlide = (index) => {
-            track.style.transform = `translateX(-${index * 100}%)`;
-        };
-
-        // Обработчик кнопки "Вперед"
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateSlide(currentIndex);
-        });
-
-        // Обработчик кнопки "Назад"
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateSlide(currentIndex);
-        });
-    }
-        // ==========================================
-    // ПЛАВНАЯ ПРОКРУТКА В ШАПКЕ
-    // ==========================================
-    const navAbout = document.getElementById('nav-about');
-    const navEvents = document.getElementById('nav-events');
-    const sectionAbout = document.getElementById('about');
-    const sectionEvents = document.getElementById('events');
-
-    if (navAbout && sectionAbout) {
-        navAbout.addEventListener('click', function(e) {
-            e.preventDefault();
-            sectionAbout.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-
-    if (navEvents && sectionEvents) {
-        navEvents.addEventListener('click', function(e) {
-            e.preventDefault();
-            sectionEvents.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
 
     /* ==========================================
-       ЛОГИКА ДЛЯ СТРАНИЦЫ РЕГИСТРАЦИИ
+       1. ЛОГИКА МОДАЛЬНЫХ ОКОН
        ========================================== */
-    const registerForm = document.getElementById('registerForm');
 
-    if (registerForm) {
-        // Отключение поля "Отчество"
-        const noMiddleNameCheckbox = document.getElementById('noMiddleName');
-        const middleNameInput = document.getElementById('middleName');
-
-        if (noMiddleNameCheckbox && middleNameInput) {
-            noMiddleNameCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    middleNameInput.value = ''; 
-                    middleNameInput.disabled = true; 
-                    middleNameInput.style.backgroundColor = '#e5e5e5';
-                } else {
-                    middleNameInput.disabled = false; 
-                    middleNameInput.style.backgroundColor = '#fff';
-                }
-            });
-        }
-
-        // Маска для даты рождения
-        const birthDateInput = document.getElementById('birthDate');
-        if (birthDateInput) {
-            birthDateInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 8) value = value.slice(0, 8);
-                
-                let formatted = '';
-                if (value.length > 0) {
-                    formatted = value.substring(0, 2);
-                    if (value.length > 2) formatted += '.' + value.substring(2, 4);
-                    if (value.length > 4) formatted += '.' + value.substring(4, 8);
-                }
-                e.target.value = formatted;
-            });
-        }
-
-        // Обработка отправки
-        registerForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                alert('Пароли не совпадают! Пожалуйста, проверьте ввод.');
-                return;
-            }
-
-            alert('Регистрация прошла успешно! (Демо-режим). Сейчас перенаправим на страницу входа.');
-            window.location.href = 'login.html'; 
-        });
-    }
-
-    /* ==========================================
-       ЛОГИКА ДЛЯ МОДАЛЬНЫХ ОКОН
-       ========================================== */
-    
-    // Получаем все модальные окна
+    // Получаем элементы окон
     const modalAbout = document.getElementById('modal-about');
     const modalNews = document.getElementById('modal-news');
     const modalContacts = document.getElementById('modal-contacts');
-    
-    // Получаем кнопки, которые их открывают
+
+    // Получаем кнопки в меню, которые их открывают
     const aboutBtn = document.getElementById('nav-about');
     const newsBtn = document.getElementById('nav-news');
     const contactsBtn = document.getElementById('nav-contacts');
-    
-    // Получаем кнопки закрытия
+
+    // Получаем кнопки закрытия (крестики)
     const closeAbout = document.getElementById('close-about');
     const closeNews = document.getElementById('close-news');
     const closeContacts = document.getElementById('close-contacts');
 
-    // Функция открытия
+    // Универсальная функция открытия
     const openModal = (modal) => {
         if (modal) {
             modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+            document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
         }
     };
 
-    // Функция закрытия
+    // Универсальная функция закрытия
     const closeModal = (modal) => {
         if (modal) {
             modal.style.display = 'none';
@@ -217,24 +35,35 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Клики по кнопкам в меню
-    if (aboutBtn) aboutBtn.addEventListener('click', () => openModal(modalAbout));
-    if (newsBtn) newsBtn.addEventListener('click', () => openModal(modalNews));
-    if (contactsBtn) contactsBtn.addEventListener('click', () => openModal(modalContacts));
+    // Назначаем кнопки открытия
+    if (aboutBtn) aboutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(modalAbout);
+    });
 
-    // Клики по крестикам
+    if (newsBtn) newsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(modalNews);
+    });
+
+    if (contactsBtn) contactsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(modalContacts);
+    });
+
+    // Назначаем кнопки закрытия (крестики)
     if (closeAbout) closeAbout.addEventListener('click', () => closeModal(modalAbout));
     if (closeNews) closeNews.addEventListener('click', () => closeModal(modalNews));
     if (closeContacts) closeContacts.addEventListener('click', () => closeModal(modalContacts));
 
-    // Закрытие по клику на фон (вне окна)
+    // Закрытие окна при клике на область ЗА пределами окна (на затемнение)
     window.onclick = function(event) {
         if (event.target === modalAbout) closeModal(modalAbout);
         if (event.target === modalNews) closeModal(modalNews);
         if (event.target === modalContacts) closeModal(modalContacts);
     };
 
-    // Закрытие по кнопке Esc
+    // Закрытие по нажатию клавиши Esc
     document.addEventListener('keydown', function(event) {
         if (event.key === "Escape") {
             if (modalAbout && modalAbout.style.display === 'block') closeModal(modalAbout);
@@ -243,9 +72,32 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+
     /* ==========================================
-       ЛОГИКА СЛАЙДЕРА НА ГЛАВНОЙ
+       2. ВАШ ТЕКУЩИЙ КОД (Слайдер, прокрутка)
        ========================================== */
+       
+    // Плавная прокрутка к разделам
+    const navAbout = document.getElementById('nav-about');
+    const navEvents = document.getElementById('nav-events');
+    const sectionAbout = document.getElementById('about');
+    const sectionEvents = document.getElementById('events');
+
+    if (navAbout && sectionAbout) {
+        navAbout.addEventListener('click', function(e) {
+            e.preventDefault();
+            sectionAbout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    if (navEvents && sectionEvents) {
+        navEvents.addEventListener('click', function(e) {
+            e.preventDefault();
+            sectionEvents.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    // Слайдер
     const track = document.getElementById('sliderTrack');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -269,27 +121,45 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    /* ==========================================
-       ПЛАВНАЯ ПРОКРУТКА В ШАПКЕ
-       ========================================== */
-    const navAbout = document.getElementById('nav-about');
-    const navEvents = document.getElementById('nav-events');
-    const sectionAbout = document.getElementById('about');
-    const sectionEvents = document.getElementById('events');
-
-    if (navAbout && sectionAbout) {
-        navAbout.addEventListener('click', function(e) {
-            e.preventDefault();
-            sectionAbout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Регистрация и вход (ваш старый код)
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                alert('Пароли не совпадают!');
+                return;
+            }
+            alert('Регистрация успешна!');
+            window.location.href = 'login.html';
         });
     }
 
-    if (navEvents && sectionEvents) {
-        navEvents.addEventListener('click', function(e) {
-            e.preventDefault();
-            sectionEvents.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Вход выполнен!');
+            window.location.href = 'index.html';
         });
     }
+
+    // Маска даты (из вашего старого кода)
+    const birthDateInput = document.getElementById('birthDate');
+    if (birthDateInput) {
+        birthDateInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 8) value = value.slice(0, 8);
+            let formatted = '';
+            if (value.length > 0) {
+                formatted = value.substring(0, 2);
+                if (value.length > 2) formatted += '.' + value.substring(2, 4);
+                if (value.length > 4) formatted += '.' + value.substring(4, 8);
+            }
+            e.target.value = formatted;
+        });
+    }
+
 });
-
-

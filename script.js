@@ -44,17 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ============================================
-       МОДАЛЬНЫЕ ОКНА — надёжная версия
+       МОДАЛЬНЫЕ ОКНА
        ============================================ */
-    console.log('[modal] скрипт загружен');
-
     const infoModal  = document.getElementById('infoModal');
     const modalBody  = document.getElementById('modalBody');
-    const closeBtn   = document.getElementById('closeModal');
-
-    console.log('[modal] infoModal найден:', !!infoModal);
-    console.log('[modal] modalBody найден:', !!modalBody);
-    console.log('[modal] closeBtn найден:',  !!closeBtn);
 
     const modalData = {
         social: {
@@ -68,7 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li>Сопровождение людей с инвалидностью;</li>
                     <li>Помощь в приютах для животных.</li>
                 </ul>
-                <p><a href="register.html">Стать волонтером →</a></p>`
+                <div class="modal-cta-wrap">
+                    <a href="register.html" class="modal-cta">Стать волонтером →</a>
+                </div>`
         },
         eco: {
             title: 'Экологическое волонтерство',
@@ -81,7 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li>Помощь в пунктах раздельного сбора;</li>
                     <li>Эко-уроки в школах и детских садах.</li>
                 </ul>
-                <p><a href="register.html">Присоединиться →</a></p>`
+                <div class="modal-cta-wrap">
+                    <a href="register.html" class="modal-cta">Присоединиться →</a>
+                </div>`
         },
         event: {
             title: 'Событийное волонтерство',
@@ -94,7 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li>Поддержка спикеров и участников;</li>
                     <li>Помощь в организации зон активностей.</li>
                 </ul>
-                <p><a href="register.html">Стать волонтером →</a></p>`
+                <div class="modal-cta-wrap">
+                    <a href="register.html" class="modal-cta">Стать волонтером →</a>
+                </div>`
         },
         volunteers: {
             title: 'Волонтерам',
@@ -106,7 +105,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li><strong>Обучение</strong> — бесплатные онлайн-курсы и вебинары;</li>
                     <li><strong>Личный кабинет</strong> — книжка волонтера, часы и достижения.</li>
                 </ul>
-                <p>Уже с нами? <a href="login.html">Войдите</a> или <a href="register.html">зарегистрируйтесь</a>.</p>`
+                <p>Уже с нами? Войдите или зарегистрируйтесь.</p>
+                <div class="modal-cta-wrap">
+                    <a href="login.html" class="modal-cta">Войти в личный кабинет</a>
+                </div>`
         },
         organizations: {
             title: 'Организациям',
@@ -119,7 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li>Информационную поддержку на ресурсах центра;</li>
                     <li>Обучение для сотрудников и добровольцев.</li>
                 </ul>
-                <p><a href="register.html">Подать заявку на партнерство →</a></p>`
+                <div class="modal-cta-wrap">
+                    <a href="register.html" class="modal-cta">Подать заявку на партнерство →</a>
+                </div>`
         },
         about: {
             title: 'О Мосволонтере',
@@ -132,7 +136,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li>Тысячи мероприятий по всей столице ежегодно;</li>
                     <li>Бесплатное обучение и поддержка для каждого добровольца.</li>
                 </ul>
-                <p>Присоединяйтесь — <a href="register.html">стать волонтером</a>.</p>`
+                <div class="modal-cta-wrap">
+                    <a href="register.html" class="modal-cta">Стать волонтером →</a>
+                </div>`
         },
         news: {
             title: 'Новости',
@@ -167,21 +173,22 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     function openModal(key) {
-        console.log('[modal] открываю:', key);
         const data = modalData[key];
-        if (!data) { console.warn('[modal] НЕТ данных для ключа:', key); return; }
-        if (!infoModal || !modalBody) { console.error('[modal] Не найден #infoModal или #modalBody в HTML!'); return; }
-        modalBody.innerHTML = '<h2>' + data.title + '</h2>' + data.html;
+        if (!data || !infoModal || !modalBody) return;
+        
+        modalBody.innerHTML = `<h2>${data.title}</h2>${data.html}`;
+        
+        // Добавляем класс show. Никаких display = 'block' (это ломало центрирование)
         infoModal.classList.add('show');
-        infoModal.style.display = 'block';           // страховка
         infoModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
         if (!infoModal) return;
+        
+        // Убираем класс show. Никаких display = 'none'.
         infoModal.classList.remove('show');
-        infoModal.style.display = 'none';            // страховка
         infoModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     }
@@ -195,14 +202,20 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         // клик по крестику
-        if (e.target.id === 'closeModal') { closeModal(); return; }
+        if (e.target.classList.contains('close-modal')) { 
+            closeModal(); 
+            return; 
+        }
         // клик по затемнению (вне .modal-content)
-        if (e.target === infoModal) { closeModal(); return; }
+        if (e.target === infoModal) { 
+            closeModal(); 
+            return; 
+        }
     });
 
     // Esc
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', e => { 
+        if (e.key === 'Escape') closeModal(); 
+    });
 
-    console.log('[modal] готово, найдено триггеров:',
-        document.querySelectorAll('[data-modal]').length);
 });

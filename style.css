@@ -305,7 +305,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* ============================================================
-   МОДАЛЬНЫЕ ОКНА — ДИЗАЙН В СТИЛЕ САЙТА (усиленная версия)
+   МОДАЛЬНЫЕ ОКНА — ФИНАЛЬНАЯ ВЕРСИЯ
    ============================================================ */
 
 /* Карточки направлений */
@@ -318,9 +318,9 @@ a:hover { text-decoration: underline; }
     box-shadow: 0 12px 28px rgba(40, 20, 80, 0.32);
 }
 
-/* ---------- Оверлей ---------- */
+/* Затемненный фон */
 #infoModal.modal {
-    display: none !important;
+    display: none;
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -328,77 +328,72 @@ a:hover { text-decoration: underline; }
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
+
+/* Оверлей с Flex-центрированием */
 #infoModal.modal.show {
-    display: block !important;
-    padding: 0 !important;
+    display: flex !important;
+    align-items: center;      /* Центрирование по вертикали */
+    justify-content: center;  /* Центрирование по горизонтали */
+    padding: 20px;
     overflow-y: auto;
     animation: modalFadeIn 0.25s ease;
 }
-/* ---------- Само окно ---------- */
+
+/* Само окно */
 #infoModal .modal-content {
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%);
+    position: relative;
     background: #fff !important;
-    width: calc(100% - 32px) !important;
-    max-width: 580px !important;
-    max-height: 90vh;
-    overflow-y: auto;
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh; /* Чтобы не вылезало за экран */
+    overflow-y: auto; /* Скролл внутри окна, если текст длинный */
     border-radius: 20px !important;
     border: none !important;
     box-shadow: 0 30px 80px rgba(30, 15, 70, 0.5) !important;
-    font-family: Arial, Helvetica, sans-serif;
+    margin: auto; /* Страховка для центрирования */
     padding: 0 !important;
-    margin: 0 !important;
     text-align: left;
 }
 
-
-/* ---------- Кнопка закрытия ---------- */
+/* Кнопка закрытия */
 #infoModal .close-modal {
     position: absolute !important;
     top: 16px !important;
     right: 16px !important;
-    left: auto !important;
-    float: none !important;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.22) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
     color: #fff !important;
     font-size: 24px !important;
-    font-weight: 400;
     line-height: 38px !important;
     text-align: center;
     cursor: pointer;
     transition: background 0.25s, transform 0.35s;
-    user-select: none;
-    z-index: 3;
-    display: block;
+    z-index: 10;
 }
 #infoModal .close-modal:hover {
-    background: rgba(255, 255, 255, 0.45) !important;
-    color: #fff !important;
+    background: rgba(255, 255, 255, 0.4) !important;
     transform: rotate(90deg) scale(1.1);
-    text-decoration: none !important;
 }
 
-/* ---------- Заголовок (фиолетовая шапка с градиентом) ---------- */
+/* Внутренние отступы для контента */
+#infoModal #modalBody {
+    padding: 0 30px 30px 30px;
+}
+
+/* Фиолетовая шапка (растягиваем на всю ширину с помощью отрицательных отступов) */
 #infoModal #modalBody h2 {
-    margin: 0 0 22px !important;
-    padding: 30px 70px 32px 30px !important;
+    margin: 0 -30px 24px -30px !important;
+    padding: 30px 70px 30px 30px !important;
     background: linear-gradient(135deg, #8177bd 0%, #6659a8 55%, #51458d 100%) !important;
     color: #fff !important;
     font-size: 23px !important;
     font-weight: 500 !important;
-    letter-spacing: 0.4px;
     position: relative;
     line-height: 1.25;
-    border-radius: 0 !important;
-    text-align: left;
 }
-/* Декоративная полоска под заголовком */
+/* Белая полоска под заголовком */
 #infoModal #modalBody h2::after {
     content: '';
     position: absolute;
@@ -411,54 +406,39 @@ a:hover { text-decoration: underline; }
     opacity: 0.85;
 }
 
-/* ---------- Контент ---------- */
-#infoModal #modalBody {
-    padding-bottom: 28px;
+/* Текст и списки */
+#infoModal #modalBody p {
+    margin: 0 0 16px 0 !important;
+    line-height: 1.6 !important;
+    color: #444 !important;
+    font-size: 15px !important;
 }
-#infoModal #modalBody > *:not(h2) {
-    margin-left: 30px;
-    margin-right: 30px;
-}
-
-/* Подзаголовки */
 #infoModal #modalBody h3 {
-    margin: 22px 0 10px !important;
+    margin: 24px 0 12px 0 !important;
     font-size: 17px !important;
     font-weight: 600 !important;
     color: #51458d !important;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0 !important;
 }
 #infoModal #modalBody h3::before {
     content: '';
-    display: inline-block;
     width: 4px;
     height: 17px;
     background: linear-gradient(180deg, #8177bd, #51458d);
     border-radius: 2px;
-    flex: 0 0 4px;
+    flex-shrink: 0;
 }
-
-/* Абзацы */
-#infoModal #modalBody p {
-    margin: 8px 0 14px !important;
-    line-height: 1.6 !important;
-    color: #444 !important;
-    font-size: 15px !important;
-}
-
-/* Списки с фиолетовыми точками */
 #infoModal #modalBody ul {
-    margin: 8px 0 16px !important;
+    margin: 0 0 20px 0 !important;
     padding-left: 0 !important;
     list-style: none !important;
 }
 #infoModal #modalBody li {
     position: relative;
     padding-left: 22px !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 12px !important;
     line-height: 1.5 !important;
     color: #444 !important;
     font-size: 15px !important;
@@ -468,64 +448,53 @@ a:hover { text-decoration: underline; }
     position: absolute;
     left: 0;
     top: 9px;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     background: #8177bd;
     border-radius: 50%;
 }
 #infoModal #modalBody li strong {
     color: #51458d !important;
 }
-
-/* Ссылки */
 #infoModal #modalBody a {
     color: #6659a8 !important;
     text-decoration: underline;
-    transition: color 0.2s;
-}
-#infoModal #modalBody a:hover {
-    color: #51458d !important;
 }
 
-/* CTA-кнопка в конце окна */
-#infoModal #modalBody > p:last-child > a:only-child {
-    display: inline-block;
-    margin-top: 6px;
+/* Кнопка-ссылка (Стать волонтером) */
+#infoModal .modal-cta-wrap {
+    margin-top: 24px !important;
+}
+#infoModal .modal-cta {
+    display: inline-block !important;
     padding: 12px 26px !important;
     background: linear-gradient(135deg, #8177bd, #6659a8) !important;
     color: #fff !important;
     text-decoration: none !important;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    box-shadow: 0 6px 16px rgba(102, 89, 168, 0.35);
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 6px 16px rgba(102, 89, 168, 0.35) !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
 }
-#infoModal #modalBody > p:last-child > a:only-child:hover {
+#infoModal .modal-cta:hover {
     background: linear-gradient(135deg, #6659a8, #51458d) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 89, 168, 0.45);
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(102, 89, 168, 0.45) !important;
 }
 
-/* ---------- Новости ---------- */
+/* Блок новостей */
 #infoModal .news-item {
     padding: 16px 20px !important;
     margin-bottom: 14px !important;
     background: #f5f3fb !important;
     border-left: 4px solid #8177bd !important;
-    border-bottom: none !important;
     border-radius: 10px;
-    transition: background 0.2s, transform 0.2s;
-}
-#infoModal .news-item:hover {
-    background: #ebe7f7 !important;
-    transform: translateX(3px);
 }
 #infoModal .news-item h3 {
-    margin: 0 0 5px !important;
+    margin: 0 0 5px 0 !important;
     padding: 0 !important;
     font-size: 16px !important;
-    font-weight: 600 !important;
     color: #51458d !important;
     display: block !important;
 }
@@ -538,49 +507,31 @@ a:hover { text-decoration: underline; }
     font-size: 12px !important;
     margin-bottom: 8px !important;
     font-weight: 600;
-    letter-spacing: 0.3px;
 }
 #infoModal .news-item p {
     margin: 0 !important;
     font-size: 14px !important;
-    line-height: 1.5 !important;
-    color: #555 !important;
 }
 
-/* ---------- Анимации ---------- */
 @keyframes modalFadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-@keyframes modalSlideIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
 
-/* ---------- Мобильная адаптация ---------- */
 @media (max-width: 600px) {
-    #infoModal.modal.show { padding: 3vh 12px; }
-    #infoModal .modal-content { border-radius: 16px !important; }
+    #infoModal .modal-content {
+        max-height: 95vh;
+    }
+    #infoModal #modalBody {
+        padding: 0 20px 20px 20px;
+    }
     #infoModal #modalBody h2 {
+        margin: 0 -20px 20px -20px !important;
+        padding: 24px 60px 24px 20px !important;
         font-size: 19px !important;
-        padding: 24px 60px 26px 22px !important;
-        margin-bottom: 18px !important;
     }
-    #infoModal #modalBody h2::after { left: 22px; bottom: 12px; width: 44px; }
-    #infoModal #modalBody > *:not(h2) { margin-left: 22px; margin-right: 22px; }
-    #infoModal #modalBody p,
-    #infoModal #modalBody li { font-size: 14px !important; }
-    #infoModal #modalBody h3 { font-size: 15px !important; }
-    #infoModal #modalBody { padding-bottom: 22px; }
-    #infoModal .close-modal {
-        width: 34px; height: 34px;
-        font-size: 20px !important;
-        line-height: 32px !important;
-        top: 12px !important; right: 12px !important;
-    }
-    #infoModal .news-item { padding: 12px 14px !important; }
-    #infoModal #modalBody > p:last-child > a:only-child {
-        padding: 10px 20px !important;
-        font-size: 14px;
+    #infoModal #modalBody h2::after {
+        left: 20px;
+        bottom: 12px;
     }
 }
